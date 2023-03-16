@@ -1,10 +1,11 @@
 FROM almalinux AS build
-RUN yum update -y && yum install maven -y
 WORKDIR /opt/shipping
 COPY pom.xml /opt/shipping/
-RUN mvn dependency:resolve
 COPY src /opt/shipping/src/
-RUN mvn package
+RUN yum update -y \
+        && yum install maven -y \
+        && mvn dependency:resolve \
+        && mvn package
 
 # FROM mcr.microsoft.com/java/jre:8u252-zulu-alpine
 # WORKDIR /opt/shipping
