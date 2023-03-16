@@ -1,8 +1,10 @@
-FROM node:14-alpine AS builder
+FROM node:14-alpine
 WORKDIR /opt/server
 COPY package.json /opt/server/
 RUN npm install
-RUN ls -lrt
+COPY server.js /opt/server/
+
+CMD ["node", "server.js"]
 
 # FROM node:14
 
