@@ -3,7 +3,7 @@ FROM node:14
 EXPOSE 8080
 
 WORKDIR /opt/server
-RUN addgroup -S cart && adduser -S cart -G cart
+RUN addgroup --system cart && adduser --system cart -G cart
 RUN chown -R cart:cart /opt/server
 USER cart
 
